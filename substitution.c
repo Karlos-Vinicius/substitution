@@ -21,7 +21,7 @@ int main(int argc, string argv[])
     */
 
    // Verifica os argumentos da linha de comando.
-   if (verify_arguments(argc, argv[1]) == 1)
+   if (verify_arguments(argc, argv[1]) != 0)
     {
         return 1;
     }
@@ -44,22 +44,22 @@ Avaliando os argumentos inseridos na linha de comando.
     {
         printf("Insira apenas 1 argumento na linha-de-comando!\n");
         printf("%i\n", number_arguments);
-        return 1;
+        return 2;
     }
     if (caracterer_alpha_26(argument) != 26) // Se o segundo argumento menos de 26 ou mais de 26 caracteres...
     {
         printf("A chave deve conter 26 caracteres!\n");
-        return 1;
+        return 3;
     }
     if (string_is_alpha(argument) == 0) // Se os caracteres forem diferentes de um alfabético...
     {
         printf("Insira argumentos alfabéticos!\n");
-        return 1;
+        return 4;
     }
     if (repiret(argument) == 1) // Se algum caracterer se repetir...
     {
         printf("Nao repita nenhum caractere!\n");
-        return 1;
+        return 5;
     }
     return 0;
 }
@@ -234,3 +234,25 @@ Retorna verdadeiro se o caracterer avaliado for alfabético
     }
     return 1;
 }
+
+/*
+ERROS DETECTADOS
+
+Número do erro retornado:
+- Descrição do erro...
+
+N 1:
+- O primeiro erro gerado é problema com o programa, ou seja, o programador que desenvolveu este código errou em algum detalhe, por favor, notifique-o em seu github, Karlos-Vinicius.
+
+N 2:
+- O erro de número 1 ocorre quando o usuário insere mais de um argumento na linha-de-comando. Para que não aconteça mais, insira somente a quantidade de argumentos necessários, como: ./substitution qwertyu... Evite algo como: ./substitution q w e r t y u... Por mais que você insira 26 letras, serão 27 argumentos diferentes, sendo que o primeiro argumento é ./substitution
+
+N 3:
+- O erro de número 2 é gerado quando é inserido mais de 26 caracteres ou menos de 26 caracteres , para resolve-lo, é necessário que seja inserido no total 26 letras(caracteres) no segundo argumento, sendo que no primeiro é ./substitution. Para evitar isso, insira o segundo argumento com 26 caracteres alfabéticos, como: .substitution qwertyuioplkjhgfdsazxcvbnm.
+
+N 4:
+- Este erro de número 3 é gerado quando os caracteres inseridos for(em) diferente(s) de um caractere alfabético, ou seja, tudo que for diferente de a, b, c, d... W, X, Y, Z, como 1, 2, 3 *, ^, á, é, ê, â... Para que não ocorra novamente, insira somente 26 caracteres alfabéticos, como /substitution qwertyuioplkjhgfdsazxcvbnm. Tudo bem se você mistura caracteres em maiúscula ou minúscula, ou somente um dos dois.
+
+N 5:
+- Este erro de número 4 é gerado quando é inserido caracteres alfabéticos repetidos, como ./substitution aabbccee... Para evitá-lo, é necessário que não seja inserido nenhum caractere repetido, pois precisamos de um total de 26 caracteres, o mesmo número do alfabeto usado no português, inglês... Exemplo, da entrada: ./substitution azqxswcdevfrbgtnhymjukilop.
+*/
